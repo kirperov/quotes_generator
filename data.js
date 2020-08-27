@@ -4,13 +4,22 @@ let phrasesBlockTree = ["les choses vont", "la crise va", "les déplacement vont
 let phrasesBlockFour = ["progresser", "s’ameliorer", "changer"];
 
 
-function myFunction() {
-      var value = Math.floor((Math.random() * 3));
-      return value;
+var divSentences = document.getElementById("showSentences");
+var number = 3;
+function getRandomSentences() {
+      function generateRandomNumber(num) {
+            var result = Math.floor((Math.random() * num));
+            return result;
+      }
+      for(var i = 0; i < 3; i++) {
+            var text = phrasesBlockOne[generateRandomNumber(number)] + " " + phrasesBlockTwo[generateRandomNumber(number)] + " " + phrasesBlockTree[generateRandomNumber(number)]  + " " + phrasesBlockFour[generateRandomNumber(number)];
+            var newQuote = document.createElement("p");
+            divSentences.appendChild(newQuote);
+            newQuote.setAttribute("id", "quote"+i);  
+            document.getElementById("quote"+i).innerText = text;
+      }
 }
-let random = myFunction();
-  
-console.log(phrasesBlockOne[Math.floor((Math.random() * 3))] + " " + phrasesBlockTwo[Math.floor((Math.random() * 3))] + " " + phrasesBlockTree[Math.floor((Math.random() * 3))]  + " " + phrasesBlockFour[Math.floor((Math.random() * 3))]);
+
 
  
  

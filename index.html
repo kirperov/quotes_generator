@@ -12,7 +12,17 @@
   </head>
   <body>
     <h1>Générateur de citations</h1>
-    <button onclick="getRandomSentences()" class="btn btn-success">Générer</button>
+    <span>Choisissez le nombre de citations à génerer</span>
+    <select id="numbers">
+      <option value="1" selected>1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <button id="generateOne" class="btn btn-success">Générer 1</button>
+    <button id="generateTwo" class="btn btn-success">Générer 2</button>
+
     <div id="showSentences"></div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

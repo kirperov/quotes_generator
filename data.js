@@ -14,42 +14,38 @@ var quotes = {
       }
 }
 
-var containerQuotes = document.getElementById("quotes");
-var containerError = document.getElementById("error");
-
-var btnGenerateQuote = document.getElementById("generate");
-var selectTheme = document.getElementById("themes");
-var selectNumbers = document.getElementById("numbers");
-
-var generatedQuoite = [];
-var numberRand = 3;
+var containerQuotes = document.getElementById("quotes"),
+    containerError = document.getElementById("error"),
+    btnGenerateQuote = document.getElementById("generate"),
+    selectTheme = document.getElementById("themes"),
+    selectNumbers = document.getElementById("numbers"),
+    numberTheme = parseInt(selectTheme.options[selectTheme.selectedIndex].value),
+    numberQuotes = parseInt(selectNumbers.options[selectNumbers.selectedIndex].value),
+    generatedQuoite = [],
+    numberRand = 3;
 
 function generateRandomNumber(num) {
-      var result = Math.floor((Math.random() * num));
-      return result;
+      return Math.floor((Math.random() * num));
 }
-var numberTheme = selectTheme.options[selectTheme.selectedIndex].value;
-var numberQuotes = selectNumbers.options[selectNumbers.selectedIndex].value;
 
 selectNumbers.addEventListener("change", function() {
-      numberQuotes = this.value;
+      numberQuotes = parseInt(this.value);
 });
 
 selectTheme.addEventListener("change", function() {
-      numberTheme = this.value;
-   
+      numberTheme = parseInt(this.value);
 });
- 
+
 function generateRandomQuotes(choice) {
-      for(var i = 0; i < numberQuotes; i++) {
-            if(choice == 1 || choice == 2) {
-                  containerError.innerText = "";
+      var quotesLength = containerQuotes.childNodes.length;
+      if(choice > 0 && choice < 3 && numberQuotes > 0 && numberQuotes < 6) {
+            containerError.innerText = "";
+            for(var i = 0; i < numberQuotes; i++) {
                   var newQuote = document.createElement("p");
                   newQuote.setAttribute("id", "quote"+i);
                   containerQuotes.appendChild(newQuote);
                   document.getElementById("quote"+i).replaceWith(newQuote);
-                  numberRand == generateRandomNumber(numberRand);
-                        if(choice == 1) {
+                        if(choice === 1) {
                         generatedQuoite.push([
                               quotes.quotesOne.quotesBlockOne[generateRandomNumber(numberRand)]  + " " +
                               quotes.quotesOne.quotesBlockTwo[generateRandomNumber(numberRand)]  + " " +
@@ -57,29 +53,22 @@ function generateRandomQuotes(choice) {
                               quotes.quotesOne.quotesBlockFour[generateRandomNumber(numberRand)]
                         ]);
                         newQuote.innerText = generatedQuoite;  
-
-                  } else if(choice == 2){
-                        generatedQuoite.push([
-                              quotes.quotesTwo.quotesBlockOne[[generateRandomNumber(numberRand)]]  + " " +
-                              quotes.quotesTwo.quotesBlockTwo[[generateRandomNumber(numberRand)]]  + " " +
-                              quotes.quotesTwo.quotesBlockTree[[generateRandomNumber(numberRand)]] + " " +
-                              quotes.quotesTwo.quotesBlockFour[[generateRandomNumber(numberRand)]]
-                        ]);
-                        newQuote.innerText = generatedQuoite;  
-            
-                  }
-            } else {
-                  containerQuotes.innerHTML ="";
-                  containerError.innerText = "Erreur de saisie";
-           
-            }
-
-            generatedQuoite = [];
-
-         
+                        } else if(choice === 2){
+                              generatedQuoite.push([
+                                    quotes.quotesTwo.quotesBlockOne[generateRandomNumber(numberRand)]  + " " +
+                                    quotes.quotesTwo.quotesBlockTwo[generateRandomNumber(numberRand)]  + " " +
+                                    quotes.quotesTwo.quotesBlockTree[generateRandomNumber(numberRand)] + " " +
+                                    quotes.quotesTwo.quotesBlockFour[generateRandomNumber(numberRand)]
+                              ]);
+                               newQuote.innerText = generatedQuoite;  
+                        }
+                  generatedQuoite = [];
+            } 
+      } else {
+            containerQuotes.innerHTML = "";
+            containerError.innerText = "Saisi incorrecte, veillez réessayer";
       }
-
-      var quotesLength = containerQuotes.childNodes.length;
+       
       if(quotesLength > numberQuotes) {
             var newNumber = quotesLength - numberQuotes;
             for(var i = 0; i < newNumber; i++) {

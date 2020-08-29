@@ -12,6 +12,12 @@
   </head>
   <body>
     <h1>Générateur de citations</h1>
+    <span>Choisir Thème</span>
+    <select id="themes">
+      <option value="1" selected>Thème 1</option>
+      <option value="2">Thème 2</option>
+ 
+    </select>
     <span>Choisissez le nombre de citations à génerer</span>
     <select id="numbers">
       <option value="1" selected>1</option>
@@ -20,10 +26,9 @@
       <option value="4">4</option>
       <option value="5">5</option>
     </select>
-    <button id="generateOne" class="btn btn-success">Générer 1</button>
-    <button id="generateTwo" class="btn btn-success">Générer 2</button>
-
-    <div id="showSentences"></div>
+    <button id="generate" class="btn btn-success">Générer</button>
+    <div id="quotes"></div>
+    <div id="error"></div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

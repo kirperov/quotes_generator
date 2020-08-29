@@ -13,9 +13,9 @@ var quotes = {
             quotesBlockFour: ["la vie", "les habitudes", "les choses"]
       }
 }
-
+var divAlertError = document.createElement("div");
 var containerQuotes = document.getElementById("quotes"),
-    containerError = document.getElementById("error"),
+     //containerError = document.getElementById("error"),
     btnGenerateQuote = document.getElementById("generate"),
     selectTheme = document.getElementById("themes"),
     selectNumbers = document.getElementById("numbers"),
@@ -23,6 +23,7 @@ var containerQuotes = document.getElementById("quotes"),
     numberQuotes = parseInt(selectNumbers.options[selectNumbers.selectedIndex].value),
     generatedQuoite = [],
     numberRand = 3;
+
 
 function generateRandomNumber(num) {
       return Math.floor((Math.random() * num));
@@ -39,7 +40,7 @@ selectTheme.addEventListener("change", function() {
 function generateRandomQuotes(choice) {
       var quotesLength = containerQuotes.childNodes.length;
       if(choice > 0 && choice < 3 && numberQuotes > 0 && numberQuotes < 6) {
-            containerError.innerText = "";
+            divAlertError.remove();
             for(var i = 0; i < numberQuotes; i++) {
                   var newQuote = document.createElement("p");
                   newQuote.setAttribute("id", "quote"+i);
@@ -66,7 +67,11 @@ function generateRandomQuotes(choice) {
             } 
       } else {
             containerQuotes.innerHTML = "";
-            containerError.innerText = "Saisi incorrecte, veillez réessayer";
+            divAlertError.className = "alert alert-danger";
+            divAlertError.id = "error";
+            divAlertError.setAttribute("role", "alert");
+            divAlertError.innerText = "Saisi incorrecte, veillez réessayer";
+            containerQuotes.appendChild(divAlertError);
       }
        
       if(quotesLength > numberQuotes) {

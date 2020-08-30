@@ -21,7 +21,7 @@ var containerQuotes = document.getElementById("quotes"),
     selectNumbers = document.getElementById("numbers"),
     numberTheme = parseInt(selectTheme.options[selectTheme.selectedIndex].value),
     numberQuotes = parseInt(selectNumbers.options[selectNumbers.selectedIndex].value),
-    generatedQuoite = [],
+    qgeneratedQuote = [],
     numberRand = 3;
 
 
@@ -47,30 +47,30 @@ function generateRandomQuotes(choice) {
                   containerQuotes.appendChild(newQuote);
                   document.getElementById("quote"+i).replaceWith(newQuote);
                         if(choice === 1) {
-                        generatedQuoite.push([
+                        qgeneratedQuote.push([
                               quotes.quotesOne.quotesBlockOne[generateRandomNumber(numberRand)]  + " " +
                               quotes.quotesOne.quotesBlockTwo[generateRandomNumber(numberRand)]  + " " +
                               quotes.quotesOne.quotesBlockTree[generateRandomNumber(numberRand)] + " " +
                               quotes.quotesOne.quotesBlockFour[generateRandomNumber(numberRand)]
                         ]);
-                        newQuote.innerText = generatedQuoite;  
+                        newQuote.innerText = qgeneratedQuote;  
                         } else if(choice === 2){
-                              generatedQuoite.push([
+                              qgeneratedQuote.push([
                                     quotes.quotesTwo.quotesBlockOne[generateRandomNumber(numberRand)]  + " " +
                                     quotes.quotesTwo.quotesBlockTwo[generateRandomNumber(numberRand)]  + " " +
                                     quotes.quotesTwo.quotesBlockTree[generateRandomNumber(numberRand)] + " " +
                                     quotes.quotesTwo.quotesBlockFour[generateRandomNumber(numberRand)]
                               ]);
-                               newQuote.innerText = generatedQuoite;  
+                               newQuote.innerText = qgeneratedQuote;  
                         }
-                  generatedQuoite = [];
+                  qgeneratedQuote = [];
             } 
       } else {
             containerQuotes.innerHTML = "";
             divAlertError.className = "alert alert-danger";
             divAlertError.id = "error";
             divAlertError.setAttribute("role", "alert");
-            divAlertError.innerText = "Saisi incorrecte, veillez réessayer";
+            divAlertError.innerText = "Saisie incorrecte, veillez réessayer";
             containerQuotes.appendChild(divAlertError);
       }
        

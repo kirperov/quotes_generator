@@ -1,18 +1,18 @@
 var quotes = [
       quotesOne = [
             quotesBlockOne = ["Avec", "Quelle que soit", "Tant que durera"],
-            quotesBlockTwo = ["l'humanité", "la vie", "le temps"],
+            quotesBlockTwo = ["l'humanité,", "la vie,", "le temps,"],
             quotesBlockTree = ["les choses vont", "le hommes vont", "la philosophie va"],
-            quotesBlockFour = ["progresser", "se développer", "changer"]
+            quotesBlockFour = ["progresser.", "se développer.", "changer."]
       ],
 
       quotesTwo = [
             quotesBlockOne = ["Le travail", "La haine", "L'amour"],
-            quotesBlockTwo = ["demande", "oblige", "impose"],
+            quotesBlockTwo = ["demande,", "oblige,", "impose,"],
             quotesBlockTree = ["de comprendre", "de changer", "à maitriser"],
-            quotesBlockFour = ["la vie", "les habitudes", "les choses"]
+            quotesBlockFour = ["la vie.", "sles habitudes.", "les choses."]
       ]
-]
+];
 
 var divAlertError = document.createElement("div");
 var containerQuotes = document.getElementById("quotes"),
@@ -22,9 +22,9 @@ var containerQuotes = document.getElementById("quotes"),
     numberTheme = parseInt(selectTheme.options[selectTheme.selectedIndex].value),
     numberQuotes = parseInt(selectNumbers.options[selectNumbers.selectedIndex].value),
     generatedQuote = [],
-    numberRand = 3;
-
-
+    nbThemeLength = selectTheme.length,
+    nbQuotesLength = selectNumbers.length,
+    numberRand;
 function generateRandomNumber(num) {
       return Math.floor((Math.random() * num));
 }
@@ -37,23 +37,23 @@ selectTheme.addEventListener("change", function() {
       numberTheme = parseInt(this.value);
 });
 
+ 
 
 function generateRandomQuotes(themeChoice) {
       var quotesLength = containerQuotes.childNodes.length;
-      if(themeChoice >= 0 && themeChoice < 3 && numberQuotes > 0 && numberQuotes < 6) {
+      if(themeChoice >= 0 && themeChoice <= nbThemeLength && numberQuotes > 0 && numberQuotes <= nbQuotesLength) {
             divAlertError.remove();
             for(var i = 0; i < numberQuotes; i++) {
                   var newQuote = document.createElement("p");
                   newQuote.setAttribute("id", "quote"+i);
                   containerQuotes.appendChild(newQuote);
                   document.getElementById("quote"+i).replaceWith(newQuote);
-                  
                   for(var n = 0; n <quotes[themeChoice].length; n++) {
-                        generatedQuote.push([quotes[themeChoice][n][generateRandomNumber(numberRand)]]);
+                        numberRand = quotes[numberTheme][n].length;
+                        generatedQuote.push(quotes[numberTheme][n][generateRandomNumber(numberRand)]);
                   }
                   generatedQuote = generatedQuote.join(' ');
                   newQuote.innerText = generatedQuote; 
-
                   generatedQuote = [];
             } 
       } else {

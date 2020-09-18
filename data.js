@@ -1,21 +1,5 @@
-var quotes = [
-      quotesOne = [
-            quotesBlockOne = ["Avec", "Quelle que soit", "Tant que durera"],
-            quotesBlockTwo = ["l'humanité,", "la vie,", "le temps,"],
-            quotesBlockTree = ["les choses vont", "le hommes vont", "la philosophie va"],
-            quotesBlockFour = ["progresser.", "se développer.", "changer."]
-      ],
-
-      quotesTwo = [
-            quotesBlockOne = ["Le travail", "La haine", "L'amour"],
-            quotesBlockTwo = ["demande,", "oblige,", "impose,"],
-            quotesBlockTree = ["de comprendre", "de changer", "à maitriser"],
-            quotesBlockFour = ["la vie.", "sles habitudes.", "les choses."]
-      ]
-];
-
-var divAlertError = document.createElement("div");
-var containerQuotes = document.getElementById("quotes"),
+var divAlertError = document.createElement("div"),
+    containerQuotes = document.getElementById("quotes"),
     btnGenerateQuote = document.getElementById("generate"),
     selectTheme = document.getElementById("themes"),
     selectNumbers = document.getElementById("numbers"),
@@ -25,6 +9,7 @@ var containerQuotes = document.getElementById("quotes"),
     nbThemeLength = selectTheme.length,
     nbQuotesLength = selectNumbers.length,
     numberRand;
+    
 function generateRandomNumber(num) {
       return Math.floor((Math.random() * num));
 }
@@ -37,9 +22,21 @@ selectTheme.addEventListener("change", function() {
       numberTheme = parseInt(this.value);
 });
 
- 
-
 function generateRandomQuotes(themeChoice) {
+      var quotes = [ 
+            quotesOne = [
+                  quotesBlockOne = ["Avec", "Quelle que soit", "Tant que durera", "Dans", "Après"],
+                  quotesBlockTwo = ["l'humanité,", "la vie,", "le temps,", "la civilisation", "l'époque,"],
+                  quotesBlockTree = ["les choses vont", "le hommes vont", "la philosophie va","les téchnologies vont", "le monde va"],
+                  quotesBlockFour = ["progresser.", "se développer.", "changer.", "s'ameliorer.", "disparaitre."]
+            ],
+            quotesTwo = [
+                  quotesBlockOne = ["Le travail", "La haine", "L'amour", "La société", "Le progrès"],
+                  quotesBlockTwo = ["permet,", "oblige,", "impose,", "donne la possibilité,", "demande,"],
+                  quotesBlockTree = ["de comprendre", "de changer", "à maitriser", "de simplifier", "d'ameliorer"],
+                  quotesBlockFour = ["la vie.", "les habitudes.", "les choses.", "les téchnologies.", "le monde."]
+            ]
+      ];
       var quotesLength = containerQuotes.childNodes.length;
       if(themeChoice >= 0 && themeChoice <= nbThemeLength && numberQuotes > 0 && numberQuotes <= nbQuotesLength) {
             divAlertError.remove();
@@ -49,13 +46,15 @@ function generateRandomQuotes(themeChoice) {
                   containerQuotes.appendChild(newQuote);
                   document.getElementById("quote"+i).replaceWith(newQuote);
                   for(var n = 0; n <quotes[themeChoice].length; n++) {
-                        numberRand = quotes[numberTheme][n].length;
-                        generatedQuote.push(quotes[numberTheme][n][generateRandomNumber(numberRand)]);
-                  }
+                        numberRand = generateRandomNumber(quotes[numberTheme][n].length);
+                        noRepeatQuote = quotes[numberTheme][n].splice(numberRand,1);           
+                        generatedQuote.push(noRepeatQuote);
+                  }               
+
                   generatedQuote = generatedQuote.join(' ');
                   newQuote.innerText = generatedQuote; 
                   generatedQuote = [];
-            } 
+            }
       } else {
             containerQuotes.innerHTML = "";
             divAlertError.className = "alert alert-danger";
@@ -72,7 +71,6 @@ function generateRandomQuotes(themeChoice) {
             }
       }
 }
-
 btnGenerateQuote.addEventListener("click", function() {
       generateRandomQuotes(numberTheme);
 });

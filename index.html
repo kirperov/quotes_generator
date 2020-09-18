@@ -11,24 +11,29 @@
     <title>Générateur de citations</title>
   </head>
   <body>
-    <h1>Générateur de citations</h1>
-    <span>Choisir Thème</span>
-    <select id="themes">
-      <option value="0" selected>Thème 1</option>
-      <option value="1">Thème 2</option>
- 
-    </select>
-    <span>Choisissez le nombre de citations à génerer</span>
-    <select id="numbers">
-      <option value="1" selected>1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select>
-    <button id="generate" class="btn btn-success">Générer</button>
-    <div id="quotes"></div>
-
+    <div class="container col-md-12">
+      <div class="col-md-4">
+        <h1>Générateur de citations</h1>
+        <span>Choisissez un thème</span>
+        <select id="themes">
+          <option value="0" selected>Thème 1</option>
+          <option value="1">Thème 2</option>
+        </select>
+      </div>
+      <div class="col-md-8">
+        <span>Choisissez un nombre de citations à générer</span>
+        <select id="numbers">
+          <option value="1" selected>1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <button id="generate" class="btn btn-success">Générer</button>
+        <div id="quotes" class="bg-light mt-3 col-md-6"></div>
+      </div>
+    </div>
+  </div>
  
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

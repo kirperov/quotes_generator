@@ -1,4 +1,4 @@
-var divAlertError = document.createElement("div"),
+let divAlertError = document.createElement("div"),
     containerQuotes = document.getElementById("quotes"),
     btnGenerateQuote = document.getElementById("generate"),
     selectTheme = document.getElementById("themes"),
@@ -23,7 +23,7 @@ selectTheme.addEventListener("change", function() {
 });
 
 function generateRandomQuotes(themeChoice) {
-      var quotes = [ 
+      let quotes = [ 
             quotesOne = [
                   quotesBlockOne = ["Avec", "Quelle que soit", "Tant que durera", "Dans", "Après"],
                   quotesBlockTwo = ["l'humanité,", "la vie,", "le temps,", "la civilisation", "l'époque,"],
@@ -36,41 +36,41 @@ function generateRandomQuotes(themeChoice) {
                   quotesBlockTree = ["de comprendre", "de changer", "à maitriser", "de simplifier", "d'ameliorer"],
                   quotesBlockFour = ["la vie.", "les habitudes.", "les choses.", "les téchnologies.", "le monde."]
             ]
-      ];
-      var quotesLength = containerQuotes.childNodes.length;
+      ],
+      quotesLength = containerQuotes.childNodes.length;
+
       if(themeChoice >= 0 && themeChoice <= nbThemeLength && numberQuotes > 0 && numberQuotes <= nbQuotesLength) {
             divAlertError.remove();
-            for(var i = 0; i < numberQuotes; i++) {
-                  var newQuote = document.createElement("p");
+            for(let i = 0; i < numberQuotes; i++) {
+                  let newQuote = document.createElement("p");
                   newQuote.setAttribute("id", "quote"+i);
                   containerQuotes.appendChild(newQuote);
                   document.getElementById("quote"+i).replaceWith(newQuote);
-                  for(var n = 0; n <quotes[themeChoice].length; n++) {
-                        numberRand = generateRandomNumber(quotes[numberTheme][n].length);
-                        noRepeatQuote = quotes[numberTheme][n].splice(numberRand,1);           
+                  for(let n = 0; n <quotes[themeChoice].length; n++) {
+                        numberRand = generateRandomNumber(quotes[themeChoice][n].length);
+                        noRepeatQuote = quotes[themeChoice][n].splice(numberRand,1);           
                         generatedQuote.push(noRepeatQuote);
                   }               
 
                   generatedQuote = generatedQuote.join(' ');
-                  newQuote.innerText = generatedQuote; 
+                  newQuote.innerText = i+1 +") "+ generatedQuote; 
                   generatedQuote = [];
-            }
+            } 
       } else {
             containerQuotes.innerHTML = "";
-            divAlertError.className = "alert alert-danger";
-            divAlertError.id = "error";
-            divAlertError.setAttribute("role", "alert");
+            divAlertError.className = "text-danger";
             divAlertError.innerText = "Saisie incorrecte, veillez réessayer";
             containerQuotes.appendChild(divAlertError);
       }
        
       if(quotesLength > numberQuotes) {
-            var newNumber = quotesLength - numberQuotes;
-            for(var i = 0; i < newNumber; i++) {
+            let newNumber = quotesLength - numberQuotes;
+            for(let i = 0; i < newNumber; i++) {
                   containerQuotes.removeChild(containerQuotes.lastChild);
             }
       }
 }
+
 btnGenerateQuote.addEventListener("click", function() {
       generateRandomQuotes(numberTheme);
 });

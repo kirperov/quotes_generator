@@ -7,7 +7,7 @@ function generateRandomNumber(num) {
 function getRandomQuotes(quotes,themeChoice) {
     for(let n = 0; n <quotes[themeChoice].length; n++) {
           numberRand = generateRandomNumber(quotes[themeChoice][n].length);
-          noRepeatQuote = quotes[themeChoice][n].splice(numberRand,1);          
+          noRepeatQuote = quotes[themeChoice][n].splice(numberRand,1);           
           generatedQuote.push(noRepeatQuote);
     }  
     return generatedQuote;

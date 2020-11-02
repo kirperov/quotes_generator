@@ -25,23 +25,23 @@ function creataRandomQuotes(themeChoice) {
 
 //Render generated quotes to display
 function renderQuotes(themeChoice) {
-    quotesLength = containerQuotes.childNodes.length;
-    if(themeChoice >= 0 && themeChoice <= nbThemeLength && numberQuotes > 0 && numberQuotes <= nbQuotesLength) {
-          divAlertError.remove();
-          creataRandomQuotes(themeChoice);
-    } else {
-          containerQuotes.innerHTML = "";
-          divAlertError.className = "text-danger";
-          divAlertError.innerText = "Saisie incorrecte, veillez réessayer";
-          containerQuotes.appendChild(divAlertError);
-    }
+      quotesLength = containerQuotes.childNodes.length;
+      if(themeChoice >= 0 && themeChoice <= nbThemeLength && numberQuotes > 0 && numberQuotes <= nbQuotesLength) {
+            divAlertError.remove();
+            creataRandomQuotes(themeChoice);
+      } else {
+            containerQuotes.innerHTML = "";
+            divAlertError.className = "text-danger";
+            divAlertError.innerText = "Saisie incorrecte, veillez réessayer";
+            containerQuotes.appendChild(divAlertError);
+      }
      //Delete if decrease number of quotes 
-    if(quotesLength > numberQuotes) {
-          let newNumber = quotesLength - numberQuotes;
-          for(let i = 0; i < newNumber; i++) {
-                containerQuotes.removeChild(containerQuotes.lastChild);
-          }
-    }
+      if(quotesLength > numberQuotes) {
+            let newNumber = quotesLength - numberQuotes;
+            for(let i = 0; i < newNumber; i++) {
+                  containerQuotes.removeChild(containerQuotes.lastChild);
+            }
+      }
 }
 
 //Button to start generate quotes

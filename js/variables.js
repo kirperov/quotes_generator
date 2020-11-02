@@ -9,4 +9,5 @@ let divAlertError = document.createElement("div"),
     generatedQuote = [],
     nbThemeLength = selectTheme.length,
     nbQuotesLength = selectNumbers.length,
-    numberRand;
+    numberRand
+    noRepeatQuote;

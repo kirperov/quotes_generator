@@ -1,25 +1,25 @@
 //Get selected number of citations
 selectNumbers.addEventListener("change", function() {
       numberQuotes = parseInt(this.value);
-  });
+});
   
 //Get selected theme
 selectTheme.addEventListener("change", function() {
-numberTheme = parseInt(this.value);
+      numberTheme = parseInt(this.value);
 });
 
 //Create pharagraphs with generated quotes
 function creataRandomQuotes(themeChoice) {
       let quotes = dataQuotes();
       for(let i = 0; i < numberQuotes; i++) {
-            let newQuote = document.createElement("p");
-                  newQuote.setAttribute("id", "quote"+i);
-                  containerQuotes.appendChild(newQuote);
-                  document.getElementById("quote"+i).replaceWith(newQuote);
-                  generatedQuote = getRandomQuotes(quotes,themeChoice);
-                  generatedQuote = generatedQuote.join(' ');
-                  newQuote.innerText = i+1 +") "+ generatedQuote; 
-                  generatedQuote = [];
+            let newQuote = document.createElement("li");
+                newQuote.setAttribute("id", "quote"+i);
+                containerQuotes.appendChild(newQuote);
+                document.getElementById("quote"+i).replaceWith(newQuote);
+                generatedQuote = getRandomQuotes(quotes,themeChoice);
+                generatedQuote = generatedQuote.join(' ');
+                newQuote.innerText = generatedQuote; 
+                generatedQuote = [];
       }
 }
 

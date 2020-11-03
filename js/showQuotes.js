@@ -1,3 +1,17 @@
+import {dataQuotes} from './quotes.js';
+import {getRandomQuotes} from './generateRandomQuotes.js';
+
+//Variables
+let selectTheme = document.getElementById("themes"),
+    selectNumbers = document.getElementById("numbers"),
+    divAlertError = document.createElement("div"),
+    containerQuotes = document.getElementById("quotes"),
+    btnGenerateQuote = document.getElementById("generate"),  
+    numberTheme = parseInt(selectTheme.options[selectTheme.selectedIndex].value),
+    numberQuotes = parseInt(selectNumbers.options[selectNumbers.selectedIndex].value),
+    nbThemeLength = selectTheme.length,
+    nbQuotesLength = selectNumbers.length;
+
 //Get selected number of citations
 selectNumbers.addEventListener("change", function() {
       numberQuotes = parseInt(this.value);
@@ -16,7 +30,7 @@ function creataRandomQuotes(themeChoice) {
             newQuote.setAttribute("id", "quote"+i);
             containerQuotes.appendChild(newQuote);
             document.getElementById("quote"+i).replaceWith(newQuote);
-            generatedQuote = getRandomQuotes(quotes,themeChoice);
+            let generatedQuote = getRandomQuotes(quotes,themeChoice);
             generatedQuote = generatedQuote.join(' ');
             newQuote.innerText = generatedQuote; 
             generatedQuote = [];
@@ -25,7 +39,7 @@ function creataRandomQuotes(themeChoice) {
 
 //Render generated quotes to display
 function renderQuotes(themeChoice) {
-      quotesLength = containerQuotes.childNodes.length;
+      let quotesLength = containerQuotes.childNodes.length;
       if(themeChoice >= 0 && themeChoice <= nbThemeLength && numberQuotes > 0 && numberQuotes <= nbQuotesLength) {
             divAlertError.remove();
             creataRandomQuotes(themeChoice);

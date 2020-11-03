@@ -13,13 +13,13 @@ function creataRandomQuotes(themeChoice) {
       let quotes = dataQuotes();
       for(let i = 0; i < numberQuotes; i++) {
             let newQuote = document.createElement("li");
-                newQuote.setAttribute("id", "quote"+i);
-                containerQuotes.appendChild(newQuote);
-                document.getElementById("quote"+i).replaceWith(newQuote);
-                generatedQuote = getRandomQuotes(quotes,themeChoice);
-                generatedQuote = generatedQuote.join(' ');
-                newQuote.innerText = generatedQuote; 
-                generatedQuote = [];
+            newQuote.setAttribute("id", "quote"+i);
+            containerQuotes.appendChild(newQuote);
+            document.getElementById("quote"+i).replaceWith(newQuote);
+            generatedQuote = getRandomQuotes(quotes,themeChoice);
+            generatedQuote = generatedQuote.join(' ');
+            newQuote.innerText = generatedQuote; 
+            generatedQuote = [];
       }
 }
 
